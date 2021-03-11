@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PickMe2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PickMe2.dbo.CompanyDB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompanyDB">
+          <Key>
+            <PropertyRef Name="Company_id" />
+            <PropertyRef Name="Company_name" />
+            <PropertyRef Name="Company_address" />
+            <PropertyRef Name="Company_vendor_name" />
+            <PropertyRef Name="Company_email" />
+            <PropertyRef Name="Company_contact" />
+          </Key>
+          <Property Name="Company_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_name" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Company_address" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Company_vendor_name" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Company_email" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Company_contact" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PickMe2.dbo.DriversDB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DriversDB">
+          <Key>
+            <PropertyRef Name="Driver_id" />
+          </Key>
+          <Property Name="Driver_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Driver_name" Type="varchar" MaxLength="70" />
+          <Property Name="Driver_address" Type="varchar" MaxLength="70" />
+          <Property Name="Driver_Pan" Type="varchar" MaxLength="50" />
+          <Property Name="Driver_license" Type="varchar" MaxLength="70" />
+          <Property Name="Company_contact" Type="varchar" MaxLength="10" />
+          <Property Name="Driver_photo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PickMe2.dbo.EmployeeDB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmployeeDB">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_id" Type="int" />
+          <Property Name="Emp_fname" Type="varchar" MaxLength="70" />
+          <Property Name="Emp_lname" Type="varchar" MaxLength="70" />
+          <Property Name="Emp_contact" Type="varchar" MaxLength="10" />
+          <Property Name="Emp_email" Type="varchar" MaxLength="70" />
+          <Property Name="Emp_address" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PickMe2.dbo.VehiclesDB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VehiclesDB">
+          <Key>
+            <PropertyRef Name="Vehicle_id" />
+          </Key>
+          <Property Name="Vehicle_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vehicle_regno" Type="varchar" MaxLength="70" />
+        </EntityType>
+        <Function Name="CompanyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Company_id" Type="int" Mode="In" />
+          <Parameter Name="Company_name" Type="varchar" Mode="In" />
+          <Parameter Name="Company_address" Type="varchar" Mode="In" />
+          <Parameter Name="Company_vendor_name" Type="varchar" Mode="In" />
+          <Parameter Name="Company_email" Type="varchar" Mode="In" />
+          <Parameter Name="Company_contact" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DriverInsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Driver_id" Type="int" Mode="In" />
+          <Parameter Name="Driver_name" Type="varchar" Mode="In" />
+          <Parameter Name="Driver_address" Type="varchar" Mode="In" />
+          <Parameter Name="Driver_Pan" Type="varchar" Mode="In" />
+          <Parameter Name="Driver_license" Type="varchar" Mode="In" />
+          <Parameter Name="Company_contact" Type="varchar" Mode="In" />
+          <Parameter Name="Driver_photo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EmployeeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Emp_id" Type="int" Mode="In" />
+          <Parameter Name="Company_id" Type="int" Mode="In" />
+          <Parameter Name="Emp_fname" Type="varchar" Mode="In" />
+          <Parameter Name="Emp_lname" Type="varchar" Mode="In" />
+          <Parameter Name="Emp_contact" Type="varchar" Mode="In" />
+          <Parameter Name="Emp_email" Type="varchar" Mode="In" />
+          <Parameter Name="Emp_address" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="PickMe2ModelStoreContainer">
+          <EntitySet Name="CompanyDB" EntityType="Self.CompanyDB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompanyDB].[Company_id] AS [Company_id], 
+    [CompanyDB].[Company_name] AS [Company_name], 
+    [CompanyDB].[Company_address] AS [Company_address], 
+    [CompanyDB].[Company_vendor_name] AS [Company_vendor_name], 
+    [CompanyDB].[Company_email] AS [Company_email], 
+    [CompanyDB].[Company_contact] AS [Company_contact]
+    FROM [dbo].[CompanyDB] AS [CompanyDB]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DriversDB" EntityType="Self.DriversDB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DriversDB].[Driver_id] AS [Driver_id], 
+    [DriversDB].[Driver_name] AS [Driver_name], 
+    [DriversDB].[Driver_address] AS [Driver_address], 
+    [DriversDB].[Driver_Pan] AS [Driver_Pan], 
+    [DriversDB].[Driver_license] AS [Driver_license], 
+    [DriversDB].[Company_contact] AS [Company_contact], 
+    [DriversDB].[Driver_photo] AS [Driver_photo]
+    FROM [dbo].[DriversDB] AS [DriversDB]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EmployeeDB" EntityType="Self.EmployeeDB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeeDB].[Emp_id] AS [Emp_id], 
+    [EmployeeDB].[Company_id] AS [Company_id], 
+    [EmployeeDB].[Emp_fname] AS [Emp_fname], 
+    [EmployeeDB].[Emp_lname] AS [Emp_lname], 
+    [EmployeeDB].[Emp_contact] AS [Emp_contact], 
+    [EmployeeDB].[Emp_email] AS [Emp_email], 
+    [EmployeeDB].[Emp_address] AS [Emp_address]
+    FROM [dbo].[EmployeeDB] AS [EmployeeDB]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VehiclesDB" EntityType="Self.VehiclesDB" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VehiclesDB].[Vehicle_id] AS [Vehicle_id], 
+    [VehiclesDB].[Vehicle_regno] AS [Vehicle_regno]
+    FROM [dbo].[VehiclesDB] AS [VehiclesDB]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PickMe2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyDB">
+          <Key>
+            <PropertyRef Name="Company_id" />
+            <PropertyRef Name="Company_name" />
+            <PropertyRef Name="Company_address" />
+            <PropertyRef Name="Company_vendor_name" />
+            <PropertyRef Name="Company_email" />
+            <PropertyRef Name="Company_contact" />
+          </Key>
+          <Property Name="Company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_address" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_vendor_name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_contact" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeDB">
+          <Key>
+            <PropertyRef Name="Emp_id" />
+          </Key>
+          <Property Name="Emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_id" Type="Int32" />
+          <Property Name="Emp_fname" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_lname" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_address" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VehiclesDB">
+          <Key>
+            <PropertyRef Name="Vehicle_id" />
+          </Key>
+          <Property Name="Vehicle_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vehicle_regno" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PickMe2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyDBs" EntityType="Self.CompanyDB" />
+          <EntitySet Name="EmployeeDBs" EntityType="Self.EmployeeDB" />
+          <EntitySet Name="VehiclesDBs" EntityType="Self.VehiclesDB" />
+          <FunctionImport Name="CompanyInsert">
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Company_name" Mode="In" Type="String" />
+            <Parameter Name="Company_address" Mode="In" Type="String" />
+            <Parameter Name="Company_vendor_name" Mode="In" Type="String" />
+            <Parameter Name="Company_email" Mode="In" Type="String" />
+            <Parameter Name="Company_contact" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CompanyAdd" EntitySet="CompanyDBs" ReturnType="Collection(PickMe2Model.CompanyDB)">
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Company_name" Mode="In" Type="String" />
+            <Parameter Name="Company_address" Mode="In" Type="String" />
+            <Parameter Name="Company_vendor_name" Mode="In" Type="String" />
+            <Parameter Name="Company_email" Mode="In" Type="String" />
+            <Parameter Name="Company_contact" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DriverInsertUpdate">
+            <Parameter Name="Driver_id" Mode="In" Type="Int32" />
+            <Parameter Name="Driver_name" Mode="In" Type="String" />
+            <Parameter Name="Driver_address" Mode="In" Type="String" />
+            <Parameter Name="Driver_Pan" Mode="In" Type="String" />
+            <Parameter Name="Driver_license" Mode="In" Type="String" />
+            <Parameter Name="Company_contact" Mode="In" Type="String" />
+            <Parameter Name="Driver_photo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DriverAddUpdate">
+            <Parameter Name="Driver_id" Mode="In" Type="Int32" />
+            <Parameter Name="Driver_name" Mode="In" Type="String" />
+            <Parameter Name="Driver_address" Mode="In" Type="String" />
+            <Parameter Name="Driver_Pan" Mode="In" Type="String" />
+            <Parameter Name="Driver_license" Mode="In" Type="String" />
+            <Parameter Name="Company_contact" Mode="In" Type="String" />
+            <Parameter Name="Driver_photo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EmployeeInsert">
+            <Parameter Name="Emp_id" Mode="In" Type="Int32" />
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Emp_fname" Mode="In" Type="String" />
+            <Parameter Name="Emp_lname" Mode="In" Type="String" />
+            <Parameter Name="Emp_contact" Mode="In" Type="String" />
+            <Parameter Name="Emp_email" Mode="In" Type="String" />
+            <Parameter Name="Emp_address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EmployeeAdd" EntitySet="EmployeeDBs" ReturnType="Collection(PickMe2Model.EmployeeDB)">
+            <Parameter Name="Emp_id" Mode="In" Type="Int32" />
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Emp_fname" Mode="In" Type="String" />
+            <Parameter Name="Emp_lname" Mode="In" Type="String" />
+            <Parameter Name="Emp_contact" Mode="In" Type="String" />
+            <Parameter Name="Emp_email" Mode="In" Type="String" />
+            <Parameter Name="Emp_address" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="DriversDBs" EntityType="PickMe2Model.DriversDB" />
+        </EntityContainer>
+        <EntityType Name="DriversDB">
+          <Key>
+            <PropertyRef Name="Driver_id" />
+          </Key>
+          <Property Name="Driver_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Driver_name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_address" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_Pan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_license" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Company_contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Driver_photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PickMe2ModelStoreContainer" CdmEntityContainer="PickMe2Entities">
+          <EntitySetMapping Name="CompanyDBs">
+            <EntityTypeMapping TypeName="PickMe2Model.CompanyDB">
+              <MappingFragment StoreEntitySet="CompanyDB">
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="Company_name" ColumnName="Company_name" />
+                <ScalarProperty Name="Company_address" ColumnName="Company_address" />
+                <ScalarProperty Name="Company_vendor_name" ColumnName="Company_vendor_name" />
+                <ScalarProperty Name="Company_email" ColumnName="Company_email" />
+                <ScalarProperty Name="Company_contact" ColumnName="Company_contact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeDBs">
+            <EntityTypeMapping TypeName="PickMe2Model.EmployeeDB">
+              <MappingFragment StoreEntitySet="EmployeeDB">
+                <ScalarProperty Name="Emp_id" ColumnName="Emp_id" />
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="Emp_fname" ColumnName="Emp_fname" />
+                <ScalarProperty Name="Emp_lname" ColumnName="Emp_lname" />
+                <ScalarProperty Name="Emp_contact" ColumnName="Emp_contact" />
+                <ScalarProperty Name="Emp_email" ColumnName="Emp_email" />
+                <ScalarProperty Name="Emp_address" ColumnName="Emp_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehiclesDBs">
+            <EntityTypeMapping TypeName="PickMe2Model.VehiclesDB">
+              <MappingFragment StoreEntitySet="VehiclesDB">
+                <ScalarProperty Name="Vehicle_id" ColumnName="Vehicle_id" />
+                <ScalarProperty Name="Vehicle_regno" ColumnName="Vehicle_regno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CompanyInsert" FunctionName="PickMe2Model.Store.CompanyInsert" />
+          <FunctionImportMapping FunctionImportName="CompanyAdd" FunctionName="PickMe2Model.Store.CompanyInsert" />
+          <FunctionImportMapping FunctionImportName="DriverInsertUpdate" FunctionName="PickMe2Model.Store.DriverInsertUpdate" />
+          <FunctionImportMapping FunctionImportName="DriverAddUpdate" FunctionName="PickMe2Model.Store.DriverInsertUpdate" />
+          <FunctionImportMapping FunctionImportName="EmployeeInsert" FunctionName="PickMe2Model.Store.EmployeeInsert" />
+          <FunctionImportMapping FunctionImportName="EmployeeAdd" FunctionName="PickMe2Model.Store.EmployeeInsert" />
+          <EntitySetMapping Name="DriversDBs">
+            <EntityTypeMapping TypeName="PickMe2Model.DriversDB">
+              <MappingFragment StoreEntitySet="DriversDB">
+                <ScalarProperty Name="Driver_photo" ColumnName="Driver_photo" />
+                <ScalarProperty Name="Company_contact" ColumnName="Company_contact" />
+                <ScalarProperty Name="Driver_license" ColumnName="Driver_license" />
+                <ScalarProperty Name="Driver_Pan" ColumnName="Driver_Pan" />
+                <ScalarProperty Name="Driver_address" ColumnName="Driver_address" />
+                <ScalarProperty Name="Driver_name" ColumnName="Driver_name" />
+                <ScalarProperty Name="Driver_id" ColumnName="Driver_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
